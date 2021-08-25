@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FactoryMethodPatternConsole
+namespace Console
 {
     //Product
     public interface ITransport
@@ -63,7 +63,7 @@ namespace FactoryMethodPatternConsole
         {
             var transport = CreateTransport();
 
-            Console.WriteLine($"Delivered with {transport.Name()}");
+            System.Console.WriteLine($"Delivered with {transport.Name()}");
 
             transport.Send();
         }
@@ -127,8 +127,8 @@ namespace FactoryMethodPatternConsole
     {
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(@"
+            System.Console.ForegroundColor = ConsoleColor.Yellow;
+            System.Console.WriteLine(@"
  ____          __     __  _                                     _            ____                        
 |  _ \    ___  \ \   / / | |       ___    __ _   _ __   _ __   (_)  _ __    / ___|                       
 | | | |  / _ \  \ \ / /  | |      / _ \  / _` | | '__| | '_ \  | | | '_ \  | |  _                        
@@ -143,16 +143,16 @@ namespace FactoryMethodPatternConsole
                  |___/                                              |___/                                
                 ");
 
-            Console.WriteLine(Environment.NewLine);
-            Console.ForegroundColor = ConsoleColor.Gray;
+            System.Console.WriteLine(Environment.NewLine);
+            System.Console.ForegroundColor = ConsoleColor.Gray;
 
             LogisticsManager manager = new LogisticsManager();
 
             while (true)
             {
-                Console.Write("Choose \"air\" | \"road\" | \"sea\" logistics type: ");
+                System.Console.Write("Choose \"air\" | \"road\" | \"sea\" logistics type: ");
 
-                var input = Console.ReadLine();
+                var input = System.Console.ReadLine();
                 if (input.Equals("close", StringComparison.OrdinalIgnoreCase))
                 {
                     break;
@@ -161,17 +161,17 @@ namespace FactoryMethodPatternConsole
                 try
                 {
                     Logistics logistics = manager.CreateLogistics(input);
-                    Console.Write(" - ");
+                    System.Console.Write(" - ");
                     logistics.ManageShip();
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(" - " + e.Message);
+                    System.Console.WriteLine(" - " + e.Message);
                 }
             }
 
-            Console.Write("Goodbye...");
-            Console.ReadKey();
+            System.Console.Write("Goodbye...");
+            System.Console.ReadKey();
         }
     }
 }
